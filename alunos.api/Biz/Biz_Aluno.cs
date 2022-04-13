@@ -1,15 +1,15 @@
 ﻿using alunos.api.Context;
 using alunos.api.Data;
-using alunos.api.Repositorio;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+using alunos.api.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace alunos.api.Biz
 {
     public class Biz_Aluno
     {
-        
+
         public readonly AppDbContext _context;
         public Biz_Aluno(AppDbContext context)
         {
@@ -19,30 +19,15 @@ namespace alunos.api.Biz
         {
             if (nomes.Count >= 5)
             {
-                // Biz_Aluno teste = new Biz_Aluno();
-                List<Aluno> listAlunos = new List<Aluno>();
-                for (var i = 0; i <= 5; i++)
-                {
-                    Aluno aluno = new Aluno();
-                    aluno.Nome = nomes[i].Trim();
-                    aluno.Email = "teste@gmail.com";
-                    aluno.Telefone = "123456789";
-
-                    listAlunos.Add(aluno);
-                }
-
-                //Inserir(listAlunos);
+                AlunoRepositorioImpl repo = new AlunoRepositorioImpl();
+                repo.Inserir(nomes);
             }
         }
 
-
-        public void Inserir(List<Aluno> alunos)
+        public Aluno GetAluno(string nome)
         {
-            if (alunos.Count > 0)
-            {
-                _context.Alunos.AddRange(alunos);
-                _context.SaveChangesAsync();
-            }
+            AlunoRepositorioImpl data = new AlunoRepositorioImpl();
+            return data.GetAluno(nome);
         }
     }
 }

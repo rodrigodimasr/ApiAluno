@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Jsjfu554qpZ8Y9kXNaQAS7601FGz4KWRWBLBL6CzbuMNfMDIZ2f0LFCBpy1GkRkXis5fKkhrCmfhbAvLIej7EA==",
+  "dgSpecHash": "DBqnStoH1P46ZRzwb6yR0sEk+VneZqNS6g2glHt1Gyk/1gIKTsajpeamV+OFGqbZsHPvoKax27Hdrff8svRRmg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rodrigodimas\\source\\repos\\alunos.api\\alunos.api\\alunos.api.csproj",
+  "projectFilePath": "C:\\Dimas\\Projetos\\Nova pasta\\alunos.api\\alunos.api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rodrigodimas\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\rodrigodimas\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

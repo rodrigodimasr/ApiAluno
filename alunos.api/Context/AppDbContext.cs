@@ -1,10 +1,10 @@
-﻿using alunos.api.Data;
+﻿using alunos.api.Entities;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace alunos.api.Context
 {
-    public class AppDbContext : DbContext
+    public partial class AppDbContext : DbContext
     {
         //Definindo o construtor.
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)

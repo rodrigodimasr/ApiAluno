@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using alunos.api.Context;
-using alunos.api.Data;
+using alunos.api.Entities;
 
 namespace alunos.api.Controllers
 {
@@ -59,34 +59,6 @@ namespace alunos.api.Controllers
 
             return NoContent();
         }
-
-        // POST: api/Temporizador
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPost]
-        //public async Task<ActionResult<Temporizador>> PostTemporizador(Temporizador temporizador)
-        //{
-        //    _context.Temporizador.Add(temporizador);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetTemporizador", new { id = temporizador.Id }, temporizador);
-        //}
-
-        //// DELETE: api/Temporizador/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteTemporizador(int id)
-        //{
-        //    var temporizador = await _context.Temporizador.FindAsync(id);
-        //    if (temporizador == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.Temporizador.Remove(temporizador);
-        //    await _context.SaveChangesAsync();
-
-        //    return NoContent();
-        //}
-
         private bool TemporizadorExists(int id)
         {
             return _context.Temporizador.Any(e => e.Id == id);

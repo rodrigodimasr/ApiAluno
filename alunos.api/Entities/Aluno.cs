@@ -1,5 +1,5 @@
 ﻿
-namespace alunos.api.Data
+namespace alunos.api.Entities
 {
     public class Aluno
     {

@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using alunos.api.Context;
-using alunos.api.Data;
+using alunos.api.Entities;
+using alunos.api.Biz;
 
 namespace alunos.api.Controllers
 {
@@ -30,6 +31,7 @@ namespace alunos.api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunos()
         {
+            //retorna todos alunos.
             return await _context.Alunos.ToListAsync();
         }
 
@@ -38,14 +40,15 @@ namespace alunos.api.Controllers
         [Route("{nome}")]
         public async Task<ActionResult<Aluno>> GetAluno(string nome)
         {
-            var aluno = await _context.Alunos.FirstOrDefaultAsync(x => x.Nome == nome);
 
-            if (aluno == null)
-            {
+            Biz_Aluno biz = new Biz_Aluno(_context);
+
+            var result = biz.GetAluno(nome);
+
+            if(result == null)
                 return NotFound(notFound);
-            }
 
-            return aluno;
+            return result;
         }
 
         // PUT: api/Aluno/5
@@ -95,7 +98,7 @@ namespace alunos.api.Controllers
             _context.Alunos.Add(aluno);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAluno", new { id = aluno.Id }, aluno);
+            return CreatedAtAction("GetAluno", new { nome = aluno.Nome }, aluno);
         }
 
         // DELETE: api/Aluno/5
@@ -109,6 +112,17 @@ namespace alunos.api.Controllers
             }
 
             _context.Alunos.Remove(aluno);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        //// DELETE: api/Aluno/5
+        [HttpDelete("All")]
+        public async Task<IActionResult> DeleteAll()
+        {
+
+            _context.Alunos.RemoveRange(_context.Alunos);
             await _context.SaveChangesAsync();
 
             return NoContent();
